@@ -1,0 +1,14 @@
+name: Codex Review Helper
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  codex-review:
+    if: contains(github.event.comment.body, '@codex review')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Echo trigger
+        run: echo "Codex review requested"

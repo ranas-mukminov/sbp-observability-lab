@@ -1,0 +1,23 @@
+- alert: SBPErrorSpike
+  expr: increase(sbp_request_errors_total{bank="X"}[5m]) / increase(sbp_requests_total{bank="X"}[5m]) > 0.05
+  for: 5m
+  labels:
+    severity: warning
+  annotations:
+    summary: "Рост ошибок по банку X"
+
+- alert: SBPLatencyHigh
+  expr: histogram_quantile(0.95, rate(sbp_request_latency_seconds_bucket[5m])) > 2
+  for: 5m
+  labels:
+    severity: critical
+  annotations:
+    summary: "Высокая задержка подтверждения платежей"
+
+- alert: SBPGatewayDown
+  expr: sbp_gateway_up == 0
+  for: 2m
+  labels:
+    severity: critical
+  annotations:
+    summary: "Интеграция СБП недоступна"

@@ -1,0 +1,5 @@
+upstream_url: "https://sbp-gateway.example.com"
+parser:
+  column_mapping:
+    timestamp: ts
+    bank_id: bank_alias

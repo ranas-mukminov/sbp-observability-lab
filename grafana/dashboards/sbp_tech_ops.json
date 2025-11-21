@@ -1,0 +1,9 @@
+{
+  "title": "SBP Tech Ops",
+  "panels": [
+    {"type": "timeseries", "title": "Latency p95", "targets": [{"expr": "histogram_quantile(0.95, rate(sbp_request_latency_seconds_bucket[5m]))"}]},
+    {"type": "timeseries", "title": "Error rate", "targets": [{"expr": "rate(sbp_request_errors_total[5m]) / rate(sbp_requests_total[5m])"}]},
+    {"type": "stat", "title": "Gateway up", "targets": [{"expr": "sbp_gateway_up"}]},
+    {"type": "table", "title": "Top errors", "targets": [{"expr": "topk(5, sbp_request_errors_total)"}]}
+  ]
+}

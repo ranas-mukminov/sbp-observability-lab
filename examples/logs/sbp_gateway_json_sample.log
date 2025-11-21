@@ -1,0 +1,2 @@
+{"timestamp": "2024-01-01T00:00:00", "bank": "alpha", "channel": "mobile", "sbp_operation": "payment", "status": "success", "duration_ms": 100}
+{"timestamp": "2024-01-01T00:00:02", "bank": "beta", "channel": "web", "sbp_operation": "payment", "status": "failed", "duration_ms": 800, "error_code": "timeout"}
