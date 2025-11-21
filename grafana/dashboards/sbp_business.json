@@ -1,0 +1,9 @@
+{
+  "title": "SBP Business Overview",
+  "panels": [
+    {"type": "timeseries", "title": "Успешные операции", "targets": [{"expr": "rate(sbp_requests_total{status=\"success\"}[5m])"}]},
+    {"type": "timeseries", "title": "Доля отказов", "targets": [{"expr": "rate(sbp_request_errors_total[5m]) / rate(sbp_requests_total[5m])"}]},
+    {"type": "table", "title": "Топ банков по отказам", "targets": [{"expr": "topk(5, sbp_request_errors_total)"}]},
+    {"type": "stat", "title": "SLA < 1s", "targets": [{"expr": "histogram_quantile(0.95, rate(sbp_request_latency_seconds_bucket[5m])) < 1"}]}
+  ]
+}

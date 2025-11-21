@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=67", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sbp-observability-lab"
+version = "0.1.0"
+description = "SBP observability lab: exporters, parsers, dashboards, AI reports"
+authors = [{name = "run-as-daemon.ru"}]
+license = {text = "Apache-2.0"}
+requires-python = ">=3.11"
+dependencies = [
+  "typer>=0.9",
+  "prometheus_client>=0.20",
+  "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.4",
+  "pytest-cov>=4.1",
+  "requests>=2.31",
+  "bandit>=1.7",
+  "ruff>=0.1.11",
+  "mypy>=1.8",
+  "pip-audit>=2.6",
+]
+
+[project.scripts]
+sbp-observability = "sbp_observability.cli.main:app"
+
+[tool.ruff]
+line-length = 100
+
+[tool.mypy]
+python_version = "3.11"
+strict = false
+
+[tool.setuptools.packages.find]
+include = ["sbp_observability*"]
